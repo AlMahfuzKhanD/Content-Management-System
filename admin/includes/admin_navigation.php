@@ -49,7 +49,7 @@
                 </ul>
             </li>
             <li>
-                <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Catagpries</a>
+                <a href="catagories.php"><i class="fa fa-fw fa-wrench"></i> Catagories</a>
             </li>
 
             <li class="active">

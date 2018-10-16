@@ -60,18 +60,27 @@
                             <div class="form-group">
                                 <input class="btn btn-primary" type="submit" name="submit" value="Add Catagory">
                             </div>
-                        </form>
-                    </div> <!-- add catagory form -->
+                        </form><!-- add catagory form -->
 
-                    <div class="col-xs-6">
 
                         <?php
 
-                        $query = "SELECT * FROM catagories";
-                        $select_catagories = mysqli_query($connection,$query);
-
+                        // showing update form from update_catagory.php file
+                        
+                        if(isset($_GET['edit'])){
+                            $get_cat_id = $_GET['edit'];
+                            include "includes/update_catagories.php";
+                        }
 
                         ?>
+
+
+
+                    </div> <!-- col-xs-6-->
+
+                    <div class="col-xs-6">
+
+
 
                         <table class="table table-bordered table-hover">
                             <thead>
@@ -83,7 +92,11 @@
                             <tbody>
 
 
-                            <?php
+                            <?php // FIND ALL CATAGORIES QUERY
+
+                            $query = "SELECT * FROM catagories";
+                            $select_catagories = mysqli_query($connection,$query);
+
                             while ($row = mysqli_fetch_assoc($select_catagories)){
                                 $catId = $row['cat_id'];
                                 $catTitle = $row['cat_title'];
@@ -93,8 +106,22 @@
 
                                 echo "<td>{$catId}</td>";
                                 echo "<td>{$catTitle}</td>";
+                                echo "<td><a href='catagories.php?delete={$catId}'>Delete</a></td>"; // sending request for delete using "delete key"
+                                echo "<td><a href='catagories.php?edit={$catId}'>Edit</a></td>"; // sending request for using using "edit key"
                                 echo "</tr>";
                             }
+
+                            ?>
+
+                            <?php
+                                // DELETE QUERY
+                                if(isset($_GET['delete'])){
+                                    $get_cat_id = $_GET['delete'];
+                                    $query = "DELETE FROM catagories WHERE cat_id = {$get_cat_id}";
+                                    $delete_query = mysqli_query($connection,$query);
+                                    header("Location:catagories.php"); // refresh page and delete catagory data at one press
+                                }
+
 
                             ?>
 
