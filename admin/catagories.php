@@ -2,18 +2,8 @@
 
     <div id="wrapper">
 
-
-
-
-
-
     <!-- Navigation -->
     <?php include "includes/admin_navigation.php"; ?>
-
-
-
-
-
 
 
     <div id="page-wrapper">
@@ -32,24 +22,7 @@
 
                     <div class="col-xs-6">
 
-                        <?php
-                            if(isset($_POST['submit'])){
-
-                                $catTitle = $_POST['cat_title'];
-
-                                if($catTitle == "" || empty($catTitle)){
-                                    echo "This field should not be empty";
-                                }else{
-                                    $query = "INSERT INTO catagories(cat_title)"; // inserting data into cat_title column of database
-                                    $query .= "VALUE ('{$catTitle}')";
-
-                                    $create_catagory_query = mysqli_query($connection,$query);
-                                    if(!$create_catagory_query){
-                                        die('QUERY FAILED'. mysqli_error($connection));
-                                    }
-                                }
-                            }
-                        ?>
+                        <?php insert_catagories();?>
 
                         <form action="" method="post">
                             <div class="form-group">
@@ -66,7 +39,7 @@
                         <?php
 
                         // showing update form from update_catagory.php file
-                        
+
                         if(isset($_GET['edit'])){
                             $get_cat_id = $_GET['edit'];
                             include "includes/update_catagories.php";
@@ -92,37 +65,13 @@
                             <tbody>
 
 
-                            <?php // FIND ALL CATAGORIES QUERY
-
-                            $query = "SELECT * FROM catagories";
-                            $select_catagories = mysqli_query($connection,$query);
-
-                            while ($row = mysqli_fetch_assoc($select_catagories)){
-                                $catId = $row['cat_id'];
-                                $catTitle = $row['cat_title'];
-
-                                echo "<tr>";
-
-
-                                echo "<td>{$catId}</td>";
-                                echo "<td>{$catTitle}</td>";
-                                echo "<td><a href='catagories.php?delete={$catId}'>Delete</a></td>"; // sending request for delete using "delete key"
-                                echo "<td><a href='catagories.php?edit={$catId}'>Edit</a></td>"; // sending request for using using "edit key"
-                                echo "</tr>";
-                            }
-
+                            <?php // FIND ALL CATAGORIES
+                            find_all_catagories();
                             ?>
 
                             <?php
-                                // DELETE QUERY
-                                if(isset($_GET['delete'])){
-                                    $get_cat_id = $_GET['delete'];
-                                    $query = "DELETE FROM catagories WHERE cat_id = {$get_cat_id}";
-                                    $delete_query = mysqli_query($connection,$query);
-                                    header("Location:catagories.php"); // refresh page and delete catagory data at one press
-                                }
-
-
+                                // DELETE CATAGORY
+                            delete_catagories();
                             ?>
 
 
