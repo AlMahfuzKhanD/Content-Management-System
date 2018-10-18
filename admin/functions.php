@@ -6,6 +6,13 @@
  * Time: 5:05 PM
  */
 
+function query_failed($result){
+    global $connection;
+    if(!$result){
+        die("QUERY FAILED".mysqli_error($connection));
+    }
+}
+
 function insert_catagories(){
 
 
@@ -59,3 +66,16 @@ function delete_catagories(){
         header("Location:catagories.php"); // refresh page and delete catagory data at one press
     }
 }
+
+function delete_posts(){
+    global $connection;
+    if (isset($_GET['delete'])){
+
+        $get_post_id = $_GET['delete'];
+        $query = "DELETE FROM posts WHERE postId = {$get_post_id}";
+        $delete_query = mysqli_query($connection,$query);
+        header("Location:posts.php"); // refresh page and delete catagory data at one press
+
+    }
+}
+
