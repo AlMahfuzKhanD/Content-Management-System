@@ -65,8 +65,8 @@
                             <tbody>
 
 
-                            <?php // FIND ALL CATAGORIES
-                            find_all_catagories();
+                            <?php // SHOW ALL CATAGORIES
+                            show_all_catagories();
                             ?>
 
                             <?php

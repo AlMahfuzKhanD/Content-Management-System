@@ -40,6 +40,7 @@
         echo "<td>{$postCommentCount}</td>";
         echo "<td>{$postDate}</td>";
         echo "<td><a href='posts.php?delete={$postId}'>Delete</a></td>";
+        echo "<td><a href='posts.php?edit={$postId}'>Edit</a></td>";
 
 
         echo "</tr>";
@@ -52,4 +53,10 @@
 </table>
 
 
-<?php delete_posts();?>
+<?php
+    delete_posts();
+
+?>
+
+
+

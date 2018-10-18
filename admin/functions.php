@@ -36,7 +36,7 @@ function insert_catagories(){
 
 }
 
-function find_all_catagories(){
+function show_all_catagories(){
     global $connection;
     $query = "SELECT * FROM catagories";
     $select_catagories = mysqli_query($connection,$query);
