@@ -28,7 +28,55 @@ while ($row = mysqli_fetch_assoc($select_posts_by_id)) {
 
 
 
+if(isset($_POST['update_post'])){
 
+
+
+//catching data from update form
+    $post_title = $_POST['post_title'];
+    $post_author = $_POST['post_author'];
+    $post_catagory_id = $_POST['post_category'];
+    $post_status = $_POST['post_status'];
+
+    $post_image = $_FILES['post_image']['name'];
+    $post_image_temp = $_FILES['post_image']['tmp_name'];
+
+    $post_tags = $_POST['post_tags'];
+    $post_content = $_POST['post_content'];
+
+
+
+
+    move_uploaded_file($post_image_temp, "../images/$post_image");
+// not to keep image field empty
+    if(empty($post_image)){
+        $query = "SELECT * FROM posts WHERE postId = $get_post_id ";
+        $select_image = mysqli_query($connection,$query);
+        while ($row = mysqli_fetch_array($select_image)){
+            $post_image = $row['postImage'];
+        }
+    }
+
+
+
+//sending catched date to database
+
+
+    $query = "UPDATE posts SET postTitle='{$post_title}' ,";
+    $query .= "postCatagoryId='{$post_catagory_id}' ,";
+    $query .= "postAuthor='{$post_author}' ,";
+    $query .= "postStatus='{$post_status}' ,";
+    $query .= "postTags='{$post_tags}' ,";
+    $query .= "postContent='{$post_content}' ,";
+    $query .= "postImage='{$post_image}' ";
+    $query .= "WHERE postId={$get_post_id}";
+    $update_post = mysqli_query($connection,$query);
+    query_failed($update_post);
+
+    /*header("Location:posts.php");*/
+
+
+}
 
 ?>
 
