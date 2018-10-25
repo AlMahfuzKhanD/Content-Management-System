@@ -33,7 +33,22 @@
         echo "<td>{$postId}</td>";
         echo "<td>{$postAuthor}</td>";
         echo "<td>{$postTitle}</td>";
-        echo "<td>{$postCatagoryId}</td>";
+
+        //selecting catagory which will be matched with post and printing dynamic catagory in the post
+
+    $query = "SELECT * FROM catagories WHERE cat_id = $postCatagoryId";
+    $select_catagories_post_update = mysqli_query($connection, $query);
+
+    while ($row = mysqli_fetch_assoc($select_catagories_post_update)) {
+        $catId = $row['cat_id'];
+        $catTitle = $row['cat_title'];
+
+
+        echo "<td>{$catTitle}</td>";}
+
+       
+
+
         echo "<td>{$postStatus}</td>";
         echo "<td><img width='150' src='../images/{$postImage}' alt='image not found'></td>";
         echo "<td>{$postTags}</td>";

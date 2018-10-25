@@ -73,7 +73,7 @@ if(isset($_POST['update_post'])){
     $update_post = mysqli_query($connection,$query);
     query_failed($update_post);
 
-    /*header("Location:posts.php");*/
+    header("Location:posts.php");
 
 
 }
