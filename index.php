@@ -17,11 +17,12 @@
                 $select_all_post_query = mysqli_query($connection,$query);
 
                 while ($row = mysqli_fetch_assoc($select_all_post_query)){
+                    $postId = $row['postId'];
                     $postTitle = $row['postTitle'];
                     $postAuthor = $row['postAuthor'];
                     $postDate = $row['postDate'];
                     $postImage = $row['postImage'];
-                    $postContent = $row['postContent'];
+                    $postContent = substr($row['postContent'],0,100); // substr() function minimize the content into 100 charackters
 
 
 
@@ -35,7 +36,7 @@
 
                     <!-- First Blog Post -->
                     <h2>
-                        <a href="#"><?php echo $postTitle;?></a>
+                        <a href="post.php?p_id=<?php echo $postId; ?>"><?php echo $postTitle;?></a>
                     </h2>
                     <p class="lead">
                         by <a href="index.php"><?php echo $postAuthor;?></a>

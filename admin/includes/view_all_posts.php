@@ -46,7 +46,7 @@
 
         echo "<td>{$catTitle}</td>";}
 
-       
+
 
 
         echo "<td>{$postStatus}</td>";
