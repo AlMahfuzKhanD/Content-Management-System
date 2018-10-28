@@ -17,7 +17,7 @@
 
             if(isset($_GET['p_id'])){
                 $SourcePostId = $_GET['p_id'];
-            }
+
 
             $query = "SELECT * FROM posts WHERE postId = $SourcePostId";
             $select_all_post_query = mysqli_query($connection,$query);
@@ -58,7 +58,8 @@
 
 
                 <?php
-            }
+            }}
+
 
 
             ?>
@@ -72,11 +73,22 @@
             <!-- Comments Form -->
             <div class="well">
                 <h4>Leave a Comment:</h4>
-                <form role="form">
+                <form action="post.php" method="post" role="form">
+
                     <div class="form-group">
-                        <textarea class="form-control" rows="3"></textarea>
+
+                        <input class="form-control" type="text" name="comment_author" placeholder="Your Name">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+
+                    <div class="form-group">
+
+                        <input class="form-control" type="email" name="comment_email" placeholder="Your Email">
+                    </div>
+
+                    <div class="form-group">
+                        <textarea class="form-control" rows="3" placeholder="Your Messagae"></textarea>
+                    </div>
+                    <button type="submit" name="create_comment" class="btn btn-primary">Submit</button>
                 </form>
             </div>
 

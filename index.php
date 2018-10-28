@@ -22,7 +22,10 @@
                     $postAuthor = $row['postAuthor'];
                     $postDate = $row['postDate'];
                     $postImage = $row['postImage'];
+
                     $postContent = substr($row['postContent'],0,100); // substr() function minimize the content into 100 charackters
+
+
 
 
 
@@ -45,8 +48,11 @@
                     <hr>
                     <img class="img-responsive" src="images/<?php echo $postImage;?>" alt="">
                     <hr>
-                    <p><?php echo $postContent;?></p>
-                    <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                    <p><?php
+
+                            echo $postContent;
+                       ?></p>
+                    <a class="btn btn-primary" href="">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
                     <hr>
 
