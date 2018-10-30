@@ -1,4 +1,6 @@
 <?php include "includes/db.php"; ?>
+<?php include "admin/functions.php"; ?>
+
 <?php include "includes/header.php"; ?>
 <?php include "includes/navigation.php"; ?>
 
@@ -71,29 +73,33 @@
             <!-- Blog Comments -->
 
             <?php
-            if (isset($_POST['create_comment'])){
-                $SourcePostId = $_GET['p_id'];
+            if (isset($_POST['create_comment'])) {
 
+                $SourcePostId = $_GET['p_id'];
+                
                 $coment_author = $_POST['comment_author'];
                 $coment_email = $_POST['comment_email'];
                 $coment_content = $_POST['comment_content'];
 
-
-                $query = "INSERT into comments (comment_post_id, coment_author, coment_email, coment_content, coment_status, coment_date )";
-                $query .= "VALUES ($SourcePostId, '{$coment_author}', '{$coment_email}', '{$coment_content}', 'UNAPPROVE', coment_date)";
-
+                $query = "INSERT INTO comments (comment_post_id, coment_author, coment_email, coment_content, coment_status, coment_date)
+VALUES ($SourcePostId ,'{$coment_author}', '{$coment_email}', '{$coment_content}', 'UNAPPROVE', now())";
+                $create_comment_query = mysqli_query($connection, $query);
+                query_failed($create_comment_query);
 
 
 
 
             }
 
+
+
+
             ?>
 
             <!-- Comments Form -->
             <div class="well">
                 <h4>Leave a Comment:</h4>
-                <form action="post.php" method="post" role="form">
+                <form action="" method="post" role="form">
 
                     <div class="form-group">
 
