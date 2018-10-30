@@ -91,3 +91,28 @@ function delete_comments(){
     }
 }
 
+
+function deny_comments(){
+    global $connection;
+    if (isset($_GET['deny'])){
+
+        $get_comment_id = $_GET['deny'];
+        $query = "UPDATE comments SET coment_status = 'Denied' WHERE comment_id = $get_comment_id";
+        $deny_query = mysqli_query($connection,$query);
+        header("Location:comments.php"); // refresh page and delete comments data at one press
+
+    }
+}
+
+function approve_comments(){
+    global $connection;
+    if (isset($_GET['approve'])){
+
+        $get_comment_id = $_GET['approve'];
+        $query = "UPDATE comments SET coment_status = 'Apporved' WHERE comment_id = {$get_comment_id}";
+        $approve_query = mysqli_query($connection,$query);
+        header("Location:comments.php"); // refresh page and delete comments data at one press
+
+    }
+}
+

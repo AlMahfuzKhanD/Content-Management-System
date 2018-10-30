@@ -89,6 +89,8 @@
 
 <?php
 delete_comments();
+deny_comments();
+approve_comments();
 
 ?>
 
