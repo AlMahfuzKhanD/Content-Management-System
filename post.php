@@ -70,6 +70,26 @@
 
             <!-- Blog Comments -->
 
+            <?php
+            if (isset($_POST['create_comment'])){
+                $SourcePostId = $_GET['p_id'];
+
+                $coment_author = $_POST['comment_author'];
+                $coment_email = $_POST['comment_email'];
+                $coment_content = $_POST['comment_content'];
+
+
+                $query = "INSERT into comments (comment_post_id, coment_author, coment_email, coment_content, coment_status, coment_date )";
+                $query .= "VALUES ($SourcePostId, '{$coment_author}', '{$coment_email}', '{$coment_content}', 'UNAPPROVE', coment_date)";
+
+
+
+
+
+            }
+
+            ?>
+
             <!-- Comments Form -->
             <div class="well">
                 <h4>Leave a Comment:</h4>
@@ -86,7 +106,7 @@
                     </div>
 
                     <div class="form-group">
-                        <textarea class="form-control" rows="3" placeholder="Your Messagae"></textarea>
+                        <textarea name="comment_content" class="form-control" rows="3" placeholder="Your Messagae"></textarea>
                     </div>
                     <button type="submit" name="create_comment" class="btn btn-primary">Submit</button>
                 </form>
