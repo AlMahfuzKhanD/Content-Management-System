@@ -73,10 +73,12 @@
             <!-- Blog Comments -->
 
             <?php
+
+            // Insert Cmmetn to specific post
             if (isset($_POST['create_comment'])) {
 
                 $SourcePostId = $_GET['p_id'];
-                
+
                 $coment_author = $_POST['comment_author'];
                 $coment_email = $_POST['comment_email'];
                 $coment_content = $_POST['comment_content'];

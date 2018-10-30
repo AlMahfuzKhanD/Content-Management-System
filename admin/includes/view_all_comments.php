@@ -52,12 +52,28 @@
         echo "<td>{$coment_email}</td>";
 
         echo "<td>{$coment_status}</td>";
-        echo "<td>In response to</td>";
+
+        $query = "SELECT * FROM posts WHERE postId = $comment_post_id ";
+        $select_postId_query = mysqli_query($connection,$query);
+
+        while($row = mysqli_fetch_assoc($select_postId_query)){
+            $postId = $row['postId'];
+
+            $postTitle = $row['postTitle'];
+
+            echo "<td><a href='../post.php?p_id=$postId'>$postTitle</a></td>";
+        }
+
+
+
+
+
+
         echo "<td>{$coment_date}</td>";
 
-        echo "<td><a href='posts.php?delete={$comment_id}'>Approve</a></td>";
-        echo "<td><a href='posts.php?delete={$comment_id}'>Deny</a></td>";
-        echo "<td><a href='posts.php?delete={$comment_id}'>Delete</a></td>";
+        echo "<td><a href='comments.php?approve={$comment_id}'>Approve</a></td>";
+        echo "<td><a href='comments.php?deny={$comment_id}'>Deny</a></td>";
+        echo "<td><a href='comments.php?delete={$comment_id}'>Delete</a></td>";
 
 
 
@@ -72,7 +88,7 @@
 
 
 <?php
-delete_posts();
+delete_comments();
 
 ?>
 

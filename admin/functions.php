@@ -74,7 +74,19 @@ function delete_posts(){
         $get_post_id = $_GET['delete'];
         $query = "DELETE FROM posts WHERE postId = {$get_post_id}";
         $delete_query = mysqli_query($connection,$query);
-        header("Location:posts.php"); // refresh page and delete catagory data at one press
+        header("Location:posts.php"); // refresh page and delete posts data at one press
+
+    }
+}
+
+function delete_comments(){
+    global $connection;
+    if (isset($_GET['delete'])){
+
+        $get_comment_id = $_GET['delete'];
+        $query = "DELETE FROM comments WHERE comment_id = {$get_comment_id}";
+        $delete_query = mysqli_query($connection,$query);
+        header("Location:comments.php"); // refresh page and delete comments data at one press
 
     }
 }
