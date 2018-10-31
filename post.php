@@ -74,7 +74,7 @@
 
             <?php
 
-            // Insert Cmmetn to specific post
+            // Insert Cmment to specific post
             if (isset($_POST['create_comment'])) {
 
                 $SourcePostId = $_GET['p_id'];
@@ -124,19 +124,27 @@ VALUES ($SourcePostId ,'{$coment_author}', '{$coment_email}', '{$coment_content}
 
             <!-- Posted Comments -->
 
+           <!-- #################### show comments catched by id and showing new comment firs as i used comment_id DESC #########-->
+
             <?php
 
-            $query = "SELECT * FROM comments WHERE comment_post_id = {$SourcePostId} ";
-            $query .= "AND coment_status = 'approved' ";
-            $query .= "ORDER BY comment_id DESC ";
+            $query = "SELECT * FROM comments WHERE comment_post_id = $SourcePostId AND coment_status = 'Apporved' ORDER BY comment_id DESC ";
+
+
 
             $select_comment_query_id = mysqli_query($connection,$query);
+
+
+
             query_failed($select_comment_query_id);
 
-            while($row = mysqli_fetch_assoc($select_comment_query_id)){
+            while($row = mysqli_fetch_array($select_comment_query_id)){
                 $comment_date = $row['coment_date'];
                 $comment_content = $row['coment_content'];
                 $coment_author = $row['coment_author'];
+
+
+
 
                 ?>
 
@@ -147,10 +155,10 @@ VALUES ($SourcePostId ,'{$coment_author}', '{$coment_email}', '{$coment_content}
                         <img class="media-object" src="http://placehold.it/64x64" alt="">
                     </a>
                     <div class="media-body">
-                        <h4 class="media-heading">Start Bootstrap
-                            <small>August 25, 2014 at 9:30 PM</small>
+                        <h4 class="media-heading"><?php echo $coment_author; ?>
+                            <small><?php echo $comment_date; ?></small>
                         </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                        <?php echo $comment_content; ?>
                     </div>
                 </div>
 
