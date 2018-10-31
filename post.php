@@ -89,6 +89,11 @@ VALUES ($SourcePostId ,'{$coment_author}', '{$coment_email}', '{$coment_content}
                 query_failed($create_comment_query);
 
 
+                $query = "UPDATE posts SET	postCommentCount = postCommentCount + 1 WHERE postId = $SourcePostId";
+                $update_comment_count_query = mysqli_query($connection,$query);
+                query_failed($update_comment_count_query);
+
+
 
 
             }

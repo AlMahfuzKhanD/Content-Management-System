@@ -24,9 +24,13 @@
                     $postImage = $row['postImage'];
 
                     $postContent = substr($row['postContent'],0,100); // substr() function minimize the content into 100 charackters
+                    $postStatus = $row['postStatus'];
 
 
-
+                    if($postStatus !== 'Published'){
+                        echo "<h1>Sorry No Post Here!!</h1>";
+                        break;
+                    }else{
 
 
                     ?>
@@ -58,11 +62,7 @@
 
 
 
-                <?php
-                }
-
-
-                ?>
+                <?php } } ?>
 
 
 
