@@ -116,3 +116,15 @@ function approve_comments(){
     }
 }
 
+
+function delete_users(){
+    global $connection;
+    if (isset($_GET['delete'])){
+
+        $get_user_id = $_GET['delete'];
+        $query = "DELETE FROM users WHERE user_id = {$get_user_id}";
+        $delete_query = mysqli_query($connection,$query);
+        header("Location:users.php"); // refresh page and delete comments data at one press
+
+    }
+}
