@@ -101,21 +101,7 @@ if(isset($_POST['update_user'])){
     <div class="form-group">
         <select name="user_role" id="post_category">
 
-            <?php
-/*            $query = "SELECT * FROM users";
-            $select_user_role_update = mysqli_query($connection, $query);
 
-            query_failed($select_user_role_update);
-
-            while ($row = mysqli_fetch_assoc($select_user_role_update)) {
-                $user_id = $row['user_id'];
-                $user_role = $row['user_role'];
-
-                echo "<option value='{$catId}'>{$catTitle}</option>";
-
-
-            }
-            */?>
             <option value="<?php echo $user_role;?>"><?php echo $user_role;?></option>
             <option value="Admin">Admin</option>
             <option value="Editor">Editor</option>
