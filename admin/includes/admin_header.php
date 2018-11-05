@@ -1,4 +1,4 @@
-<?php include "../includes/db.php";?> // adding db connection for all admin page
+<?php include "../includes/db.php";?> <!--adding db connection for all admin page-->
 <?php include "functions.php";?>
 <?php ob_start(); ?>
 <?php session_start(); ?>
