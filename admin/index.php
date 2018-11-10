@@ -171,6 +171,25 @@
 
 
                 <!-- /.row -->
+                <?php
+
+                $query = "SELECT * FROM posts WHERE postStatus = 'draft'";
+                $select_all_draft_posts = mysqli_query($connection,$query);
+                $post_draft_counts = mysqli_num_rows($select_all_draft_posts);
+
+                $query = "SELECT * FROM comments WHERE coment_status = 'Denied'";
+                $select_all_denied_comments = mysqli_query($connection,$query);
+                $denied_comment_counts = mysqli_num_rows($select_all_denied_comments);
+
+                $query = "SELECT * FROM users WHERE user_role = 'Editor'";
+                $select_editor_users= mysqli_query($connection,$query);
+                $editor_user_counts = mysqli_num_rows($select_editor_users);
+
+
+
+                ?>
+
+
 
                 <div class="row">
 
@@ -184,9 +203,9 @@
 
                                 <?php
 
-                                $element_text = ['Active Posts','Comments','User','Catagories'];
-                                $element_count = [$post_counts,$comments_counts,$users_counts,$catagories_counts];
-                                for($i = 0;$i<4;$i++){
+                                $element_text = ['Active Posts','Draft Posts','Comments','Denied Comments','User','Editor','Catagories'];
+                                $element_count = [$post_counts,$post_draft_counts,$comments_counts,$denied_comment_counts,$users_counts,$editor_user_counts,$catagories_counts];
+                                for($i = 0;$i<7;$i++){
 
                                     echo "['{$element_text[$i]}'" . "," . "{$element_count[$i]}],";
                                 }
