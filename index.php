@@ -15,6 +15,7 @@
                 <?php
                     $query = "SELECT * FROM posts";
                 $select_all_post_query = mysqli_query($connection,$query);
+                $i = 0;
 
                 while ($row = mysqli_fetch_assoc($select_all_post_query)){
                     $postId = $row['postId'];
@@ -27,10 +28,8 @@
                     $postStatus = $row['postStatus'];
 
 
-                    if($postStatus !== 'Published'){
-                        echo "<h1>Sorry No Post Here!!</h1>";
-                        break;
-                    }else{
+                    if($postStatus == 'Published'){
+
 
 
                     ?>
@@ -56,13 +55,14 @@
 
                             echo $postContent;
                        ?></p>
-                    <a class="btn btn-primary" href="">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                    <a class="btn btn-primary" href="post.php?p_id=<?php echo $postId; ?>">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
                     <hr>
 
 
 
-                <?php } } ?>
+                <?php }
+                $i++;} ?>
 
 
 

@@ -199,7 +199,7 @@
 
                         function drawChart() {
                             var data = google.visualization.arrayToDataTable([
-                                ['Data', 'Count'],
+                                ['Site Overview', 'Count'],
 
                                 <?php
 
