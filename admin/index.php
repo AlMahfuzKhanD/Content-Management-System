@@ -173,9 +173,16 @@
                 <!-- /.row -->
                 <?php
 
+
+
+
                 $query = "SELECT * FROM posts WHERE postStatus = 'draft'";
                 $select_all_draft_posts = mysqli_query($connection,$query);
                 $post_draft_counts = mysqli_num_rows($select_all_draft_posts);
+
+                $query = "SELECT * FROM posts WHERE postStatus = 'published'";
+                $select_all_published_posts = mysqli_query($connection,$query);
+                $post_published_counts = mysqli_num_rows($select_all_published_posts);
 
                 $query = "SELECT * FROM comments WHERE coment_status = 'Denied'";
                 $select_all_denied_comments = mysqli_query($connection,$query);
@@ -187,11 +194,13 @@
 
 
 
+
                 ?>
 
 
 
                 <div class="row">
+
 
                     <script type="text/javascript">
                         google.charts.load('current', {'packages':['bar']});
@@ -203,9 +212,9 @@
 
                                 <?php
 
-                                $element_text = ['Active Posts','Draft Posts','Comments','Denied Comments','User','Editor','Catagories'];
-                                $element_count = [$post_counts,$post_draft_counts,$comments_counts,$denied_comment_counts,$users_counts,$editor_user_counts,$catagories_counts];
-                                for($i = 0;$i<7;$i++){
+                                $element_text = ['All Posts','Active Posts','Draft Posts','Comments','Denied Comments','User','Editor','Catagories'];
+                                $element_count = [$post_counts,$post_published_counts,$post_draft_counts,$comments_counts,$denied_comment_counts,$users_counts,$editor_user_counts,$catagories_counts];
+                                for($i = 0;$i<8;$i++){
 
                                     echo "['{$element_text[$i]}'" . "," . "{$element_count[$i]}],";
                                 }
@@ -213,7 +222,7 @@
 
                                 ?>
 
-                               // ['Posts', 1000],
+                                // ['Posts', 1000],
 
                             ]);
 
@@ -229,9 +238,9 @@
                             chart.draw(data, google.charts.Bar.convertOptions(options));
                         }
                     </script>
-
-
                     <div id="columnchart_material" style="width:'auto'; height: 500px;"></div>
+
+
 
                 </div>
 

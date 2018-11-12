@@ -49,7 +49,8 @@
                     </p>
                     <p><span class="glyphicon glyphicon-time"></span> <?php echo $postDate;?></p>
                     <hr>
-                    <img class="img-responsive" src="images/<?php echo $postImage;?>" alt="">
+                        <a href="post.php?p_id=<?php echo $postId; ?>">
+                    <img class="img-responsive" src="images/<?php echo $postImage;?>" alt=""></a>
                     <hr>
                     <p><?php
 

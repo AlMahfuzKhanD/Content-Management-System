@@ -154,7 +154,7 @@ if(isset($_POST['update_post'])){
 
     <div class="form-group">
         <label for="post_content">Post Content</label>
-        <textarea class="form-control" name="post_content" id="" cols="30" rows="10"><?php echo $postContent;?></textarea>
+        <textarea class="form-control" name="post_content" id="body" cols="30" rows="10"><?php echo $postContent;?></textarea>
     </div>
 
     <div class="form-group">

@@ -23,7 +23,8 @@ if(isset($_POST['create_post'])){
 
     query_failed($create_post_query);
 
-    echo "Post Created:" . " " . "<a href='posts.php'>View Posts</a>";
+    /*echo "Post Created:" . " " . "<a href='posts.php'>View Posts</a>";*/
+    echo "<p class='bg-success'>Post Created. <a href='posts.php'>View Posts</a></p>";
 
 
 
@@ -95,7 +96,8 @@ if(isset($_POST['create_post'])){
 
     <div class="form-group">
         <label for="post_content">Post Content</label>
-        <textarea class="form-control" name="post_content" id="" cols="30" rows="10"></textarea>
+        <textarea class="form-control" name="post_content" id="body" ></textarea>
+
     </div>
 
     <div class="form-group">
