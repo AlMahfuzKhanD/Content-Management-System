@@ -23,6 +23,8 @@ if(isset($_POST['create_post'])){
 
     query_failed($create_post_query);
 
+    echo "Post Created:" . " " . "<a href='posts.php'>View Posts</a>";
+
 
 
 }
