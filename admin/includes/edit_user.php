@@ -107,9 +107,22 @@ if(isset($_POST['update_user'])){
 
 
             <option value="<?php echo $user_role;?>"><?php echo $user_role;?></option>
-            <option value="Admin">Admin</option>
-            <option value="Editor">Editor</option>
-            <option value="Subscriber">Subscriber</option>
+
+
+            <?php
+            if($user_role == 'Admin'){
+                echo "<option value=\"Editor\">Editor</option>";
+                echo "<option value=\"Subscriber\">Subscriber</option>";
+
+            }else if($user_role == 'Editor'){
+                echo "<option value=\"Admin\">Admin</option>";
+                echo "<option value=\"Subscriber\">Subscriber</option>";
+            }else{
+                echo "<option value=\"Admin\">Admin</option>";
+                echo "<option value=\"Editor\">Editor</option>";
+            }
+
+            ?>
 
 
 

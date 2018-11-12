@@ -15,7 +15,7 @@
                 <?php
                     $query = "SELECT * FROM posts";
                 $select_all_post_query = mysqli_query($connection,$query);
-                $i = 0;
+
 
                 while ($row = mysqli_fetch_assoc($select_all_post_query)){
                     $postId = $row['postId'];
@@ -28,7 +28,7 @@
                     $postStatus = $row['postStatus'];
 
 
-                    if($postStatus == 'Published'){
+                    if($postStatus == 'published'){
 
 
 
@@ -61,8 +61,8 @@
 
 
 
-                <?php }
-                $i++;} ?>
+                <?php }}
+                ?>
 
 
 
