@@ -1,4 +1,4 @@
-
+<?php session_start(); ?>
 
 
 <!-- Navigation -->
@@ -33,6 +33,18 @@
                <li>
                     <a href="admin">Admin</a>
                 </li>
+
+
+                <?php
+                if(isset($_SESSION['user_role'])){
+                    if(isset($_GET['p_id'])){
+
+                        $get_post_id = $_GET['p_id'];
+                        echo "<li><a href='admin/posts.php?source=edit_post&p_id={$get_post_id}'>Edit Post</a></li>";
+                    }
+                }
+
+                ?>
 
             </ul>
         </div>

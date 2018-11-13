@@ -1,6 +1,77 @@
+
+<?php
+if(isset($_POST['checkBoxArray'])){
+    foreach ($_POST['checkBoxArray'] as $postIdValue ){
+        $bulk_options = $_POST['bulk_options'];
+
+        switch ($bulk_options){
+            case 'published':
+
+                $query = "UPDATE posts SET postStatus = '{$bulk_options}' WHERE postId = {$postIdValue} ";
+                $update_post_status_publish = mysqli_query($connection,$query);
+                query_failed($update_post_status_publish);
+
+                break;
+
+            case 'draft':
+
+                $query = "UPDATE posts SET postStatus = '{$bulk_options}' WHERE postId = {$postIdValue} ";
+                $update_post_status_draft = mysqli_query($connection,$query);
+                query_failed($update_post_status_draft);
+
+                break;
+
+            case 'delete':
+
+                $query = "DELETE FROM posts WHERE postId = {$postIdValue}";
+                $delete_post = mysqli_query($connection,$query);
+                query_failed($delete_post);
+
+                break;
+        }
+
+    }
+}
+
+?>
+
+
+
+
+
+<form action ="" method ="post">
+
+
+
+
+
+
 <table class="table table-bordered table-hover">
+
+    <div style="padding: 0; margin-bottom: 15px" class="col-xs-4" id="bulkOptionsContainer">
+
+        <select class="form-control" name="bulk_options" id="">
+            <option value="">Select Options</option>
+            <option value="published">Publish</option>
+            <option value="draft">Draft</option>
+            <option value="delete">Delete</option>
+        </select>
+
+    </div>
+
+    <div class="col-xs-4">
+        <input type="submit" name="submit" class="btn btn-success" value="Apply">
+        <a class="btn btn-primary" href="posts.php?source=add_post">Add New</a>
+    </div>
+
+
+
+
+
+
     <thead>
     <tr>
+        <th><input id="selectAllBoxex" type="checkbox"></th>
         <th>Id</th>
         <th>Author</th>
         <th>Title</th>
@@ -32,6 +103,7 @@
         $postCommentCount = $row['postCommentCount'];
         $postDate = $row['postDate'];
         echo "<tr>";
+        echo "<td><input class=\"checkBoxes\" type=\"checkbox\" name='checkBoxArray[]' value='{$postId}'></td>";
         echo "<td>{$postId}</td>";
         echo "<td>{$postAuthor}</td>";
         echo "<td>{$postTitle}</td>";
@@ -70,11 +142,15 @@
     </tbody>
 </table>
 
+</form>
+
 
 <?php
     delete_posts();
 
 ?>
+
+
 
 
 

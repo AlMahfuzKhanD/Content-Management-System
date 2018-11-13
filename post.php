@@ -43,7 +43,7 @@
 
                 <!-- First Blog Post -->
                 <h2>
-                    <a href="#"><?php echo $postTitle;?></a>
+                    <a href=""><?php echo $postTitle;?></a>
                 </h2>
                 <p class="lead">
                     by <a href="index.php"><?php echo $postAuthor;?></a>

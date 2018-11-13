@@ -16,7 +16,7 @@
 
 
                 <h1 class="page-header">
-                    Welcome To Admin
+                    Welcome
                     <small><?php
                         echo $_SESSION['user_role'];
                         ?></small>
