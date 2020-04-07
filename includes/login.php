@@ -17,7 +17,7 @@ if(isset($_POST['login'])){
     $username = mysqli_real_escape_string($connection,$username);
     $password = mysqli_real_escape_string($connection,$password);
 
-    $query = "SELECT * FROM users WHERE usename = '{$username}'";
+    $query = "SELECT * FROM users WHERE userName = '{$username}'";
     $select_user_querey = mysqli_query($connection,$query);
 
     if(!$select_user_querey){
@@ -26,12 +26,12 @@ if(isset($_POST['login'])){
 
 
     while ($row = mysqli_fetch_array($select_user_querey)){
-        $db_user_id = $row['user_id'];
-        $db_usename = $row['usename'];
-        $db_user_password = $row['user_password'];
-        $db_user_firstname = $row['user_firstname'];
-        $db_user_lastname = $row['user_lastname'];
-        $db_user_role = $row['user_role'];
+        $db_user_id = $row['userId'];
+        $db_usename = $row['userName'];
+        $db_user_password = $row['userPassword'];
+        $db_user_firstname = $row['userFirstName'];
+        $db_user_lastname = $row['userLastName'];
+        $db_user_role = $row['userRole'];
 
     }
 

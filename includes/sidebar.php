@@ -61,8 +61,8 @@
 
                     <?php
                     while ($row = mysqli_fetch_assoc($select_catagories_sidebar)){
-                        $catTitle = $row['cat_title'];
-                        $catId = $row['cat_id'];
+                        $catTitle = $row['catTitle'];
+                        $catId = $row['catId'];
                         echo "<li><a href='catagory.php?catagory=$catId'>{$catTitle}</a></li>";
                     }
 

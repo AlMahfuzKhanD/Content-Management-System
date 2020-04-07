@@ -184,11 +184,11 @@
                 $select_all_published_posts = mysqli_query($connection,$query);
                 $post_published_counts = mysqli_num_rows($select_all_published_posts);
 
-                $query = "SELECT * FROM comments WHERE coment_status = 'Denied'";
+                $query = "SELECT * FROM comments WHERE commentStatus = 'Denied'";
                 $select_all_denied_comments = mysqli_query($connection,$query);
                 $denied_comment_counts = mysqli_num_rows($select_all_denied_comments);
 
-                $query = "SELECT * FROM users WHERE user_role = 'Editor'";
+                $query = "SELECT * FROM users WHERE userRole = 'Editor'";
                 $select_editor_users= mysqli_query($connection,$query);
                 $editor_user_counts = mysqli_num_rows($select_editor_users);
 

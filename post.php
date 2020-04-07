@@ -87,7 +87,7 @@
 
 
 
-                    $query = "INSERT INTO comments (comment_post_id, coment_author, coment_email, coment_content, coment_status, coment_date)
+                    $query = "INSERT INTO comments (commentPostId, commentAuthor, commentEmail, commentContent, commentStatus, commentDate)
 VALUES ($SourcePostId ,'{$coment_author}', '{$coment_email}', '{$coment_content}', 'Denied', now())";
                     $create_comment_query = mysqli_query($connection, $query);
                     query_failed($create_comment_query);
@@ -155,9 +155,9 @@ VALUES ($SourcePostId ,'{$coment_author}', '{$coment_email}', '{$coment_content}
             query_failed($select_comment_query_id);
 
             while($row = mysqli_fetch_array($select_comment_query_id)){
-                $comment_date = $row['coment_date'];
-                $comment_content = $row['coment_content'];
-                $coment_author = $row['coment_author'];
+                $comment_date = $row['commentDate'];
+                $comment_content = $row['commentContent'];
+                $coment_author = $row['commentAuthor'];
 
 
 

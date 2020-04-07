@@ -111,12 +111,12 @@ if(isset($_POST['checkBoxArray'])){
 
         //selecting catagory which will be matched with post and printing dynamic catagory in the post
 
-    $query = "SELECT * FROM catagories WHERE cat_id = $postCatagoryId";
+    $query = "SELECT * FROM catagories WHERE catId = $postCatagoryId";
     $select_catagories_post_update = mysqli_query($connection, $query);
 
     while ($row = mysqli_fetch_assoc($select_catagories_post_update)) {
-        $catId = $row['cat_id'];
-        $catTitle = $row['cat_title'];
+        $catId = $row['catId'];
+        $catTitle = $row['catTitle'];
 
 
         echo "<td>{$catTitle}</td>";}

@@ -6,20 +6,20 @@ if(isset($_GET['u_id'])) {
 
     $get_user_id = $_GET['u_id'];
 
-    $query = "SELECT * FROM users WHERE user_id = $get_user_id";
+    $query = "SELECT * FROM users WHERE userId = $get_user_id";
     $select_users_by_id = mysqli_query($connection,$query);
     query_failed($select_users_by_id);
 
     while ($row = mysqli_fetch_assoc($select_users_by_id)) {
 
-        $user_id = $row['user_id'];
-        $username = $row['usename'];
-        $user_firstname = $row['user_firstname'];
-        $user_lastname = $row['user_lastname'];
-        $user_email = $row['user_email'];
-        $user_role = $row['user_role'];
-        $user_image = $row['user_image'];
-        $user_password = $row['user_password'];
+        $user_id = $row['userId'];
+        $username = $row['userName'];
+        $user_firstname = $row['userFirstName'];
+        $user_lastname = $row['userLastName'];
+        $user_email = $row['userEmail'];
+        $user_role = $row['userRole'];
+        $user_image = $row['userImage'];
+        $user_password = $row['userPassword'];
 
 
     }
@@ -55,10 +55,10 @@ if(isset($_POST['update_user'])){
 
 // not to keep image field empty
     if(empty($user_image)){
-        $query = "SELECT * FROM users WHERE user_id = $get_user_id ";
+        $query = "SELECT * FROM users WHERE userId = $get_user_id ";
         $select_image = mysqli_query($connection,$query);
         while ($row = mysqli_fetch_array($select_image)){
-            $user_image = $row['user_image'];
+            $user_image = $row['userImage'];
         }
     }
 

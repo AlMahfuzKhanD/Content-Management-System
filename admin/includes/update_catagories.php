@@ -10,12 +10,12 @@
 
             $get_cat_id = $_GET['edit'];
 
-            $query = "SELECT * FROM catagories WHERE cat_id = $get_cat_id";
+            $query = "SELECT * FROM catagories WHERE catId = $get_cat_id";
             $select_catagories_update = mysqli_query($connection, $query);
 
             while ($row = mysqli_fetch_assoc($select_catagories_update)) {
-                $catId = $row['cat_id'];
-                $catTitle = $row['cat_title'];
+                $catId = $row['catId'];
+                $catTitle = $row['catTitle'];
                 ?>
 
                 <input value="<?php if (isset($catTitle)) {
@@ -37,7 +37,7 @@
         //UPDATE CATAGORY
         if(isset($_POST['update_catagory'])){
             $get_cat_title = $_POST['cat_title'];
-            $query = "UPDATE catagories SET cat_title = '{$get_cat_title}' WHERE cat_id = {$get_cat_id}";
+            $query = "UPDATE catagories SET catTitle = '{$get_cat_title}' WHERE catId = {$get_cat_id}";
             $update_query = mysqli_query($connection,$query);
             if(!$update_query){
                 die("QUERY FAILED".mysqli_error($connection));

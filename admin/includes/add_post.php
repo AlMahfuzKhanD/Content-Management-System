@@ -50,8 +50,8 @@ if(isset($_POST['create_post'])){
             query_failed($select_catagories_post_update);
 
             while ($row = mysqli_fetch_assoc($select_catagories_post_update)) {
-                $catId = $row['cat_id'];
-                $catTitle = $row['cat_title'];
+                $catId = $row['catId'];
+                $catTitle = $row['catTitle'];
 
                 echo "<option value='{$catId}'>{$catTitle}</option>";
 

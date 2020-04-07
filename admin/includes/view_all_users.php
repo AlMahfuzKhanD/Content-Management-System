@@ -23,13 +23,13 @@
     $select_users = mysqli_query($connection,$query);
 
     while ($row = mysqli_fetch_assoc($select_users)) {
-        $user_id = $row['user_id'];
-        $usename = $row['usename'];
-        $user_firstname = $row['user_firstname'];
-        $user_lastname = $row['user_lastname'];
-        $user_email = $row['user_email'];
-        $user_role = $row['user_role'];
-        $user_image = $row['user_image'];
+        $user_id = $row['userId'];
+        $usename = $row['userName'];
+        $user_firstname = $row['userFirstName'];
+        $user_lastname = $row['userLastName'];
+        $user_email = $row['userEmail'];
+        $user_role = $row['userRole'];
+        $user_image = $row['userImage'];
 
 
         echo "<tr>";

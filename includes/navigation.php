@@ -23,7 +23,7 @@
                $query = "SELECT * FROM catagories";
                $select_all_catagory_query = mysqli_query($connection,$query);
                while ($row = mysqli_fetch_assoc($select_all_catagory_query)){
-                   $catTitle = $row['cat_title'];
+                   $catTitle = $row['catTitle'];
                    echo "<li><a href=''>{$catTitle}</a></li>";
                }
 

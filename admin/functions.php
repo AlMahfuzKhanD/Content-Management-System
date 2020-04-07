@@ -19,12 +19,12 @@ function insert_catagories(){
         if(isset($_POST['submit'])){
             global $connection;
 
-            $catTitle = $_POST['cat_title'];
+            $catTitle = $_POST['catTitle'];
 
             if($catTitle == "" || empty($catTitle)){
                 echo "This field should not be empty";
             }else{
-                $query = "INSERT INTO catagories(cat_title)"; // inserting data into cat_title column of database
+                $query = "INSERT INTO catagories(catTitle)"; // inserting data into cat_title column of database
                 $query .= "VALUE ('{$catTitle}')";
 
                 $create_catagory_query = mysqli_query($connection,$query);
@@ -42,8 +42,8 @@ function show_all_catagories(){
     $select_catagories = mysqli_query($connection,$query);
 
     while ($row = mysqli_fetch_assoc($select_catagories)){
-        $catId = $row['cat_id'];
-        $catTitle = $row['cat_title'];
+        $catId = $row['catId'];
+        $catTitle = $row['catTitle'];
 
         echo "<tr>";
 
@@ -61,7 +61,7 @@ function delete_catagories(){
     global $connection;
     if(isset($_GET['delete'])){
         $get_cat_id = $_GET['delete'];
-        $query = "DELETE FROM catagories WHERE cat_id = {$get_cat_id}";
+        $query = "DELETE FROM catagories WHERE catId = {$get_cat_id}";
         $delete_query = mysqli_query($connection,$query);
         header("Location:catagories.php"); // refresh page and delete catagory data at one press
     }
@@ -84,7 +84,7 @@ function delete_comments(){
     if (isset($_GET['delete'])){
 
         $get_comment_id = $_GET['delete'];
-        $query = "DELETE FROM comments WHERE comment_id = {$get_comment_id}";
+        $query = "DELETE FROM comments WHERE commentId = {$get_comment_id}";
         $delete_query = mysqli_query($connection,$query);
         header("Location:comments.php"); // refresh page and delete comments data at one press
 
@@ -97,7 +97,7 @@ function deny_comments(){
     if (isset($_GET['deny'])){
 
         $get_comment_id = $_GET['deny'];
-        $query = "UPDATE comments SET coment_status = 'Denied' WHERE comment_id = $get_comment_id";
+        $query = "UPDATE comments SET commentStatus = 'Denied' WHERE commentId = $get_comment_id";
         $deny_query = mysqli_query($connection,$query);
         header("Location:comments.php"); // refresh page and delete comments data at one press
 
@@ -109,7 +109,7 @@ function approve_comments(){
     if (isset($_GET['approve'])){
 
         $get_comment_id = $_GET['approve'];
-        $query = "UPDATE comments SET coment_status = 'Apporved' WHERE comment_id = {$get_comment_id}";
+        $query = "UPDATE comments SET commentStatus = 'Apporved' WHERE commentId = {$get_comment_id}";
         $approve_query = mysqli_query($connection,$query);
         header("Location:comments.php"); // refresh page and delete comments data at one press
 
@@ -122,7 +122,7 @@ function delete_users(){
     if (isset($_GET['delete'])){
 
         $get_user_id = $_GET['delete'];
-        $query = "DELETE FROM users WHERE user_id = {$get_user_id}";
+        $query = "DELETE FROM users WHERE userId = {$get_user_id}";
         $delete_query = mysqli_query($connection,$query);
         header("Location:users.php"); // refresh page and delete comments data at one press
 
