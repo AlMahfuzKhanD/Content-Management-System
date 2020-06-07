@@ -8,9 +8,9 @@
 if(isset($_POST['submit'])){
     $userName = $_POST['username'];
     $userEmail = $_POST['email'];
-    $userPassword = $_POST['password'];
+    $userPassword = $_POST['password']; 
 
-    echo $userName = mysqli_real_escape_string($connection, $userName);
+    $userName = mysqli_real_escape_string($connection, $userName);
     $userEmail = mysqli_real_escape_string($connection, $userEmail);
     $userPassword = mysqli_real_escape_string($connection, $userPassword);
 
